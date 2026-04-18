@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>InsightHub – Smart Content for Modern Minds</title>
+    <meta name="description" content="Latest insights on Technology, Finance, AI Tools & Health. Expert curation, data-driven articles.">
+    <!-- TailwindCSS + Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom styles for ads and anchor -->
+    <style>
+        /* Ad container styling */
+        .ad-container {
+            text-align: center;
+            background: #f8fafc;
+            margin: 1.5rem 0;
+            padding: 0.5rem;
+            border-radius: 12px;
+        }
+        .ad-label {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+        }
+        /* Bottom anchor ad */
+        .bottom-anchor {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: transform 0.3s;
+            border-top: 1px solid #e2e8f0;
+        }
+        .bottom-anchor.closed {
+            transform: translateY(100%);
+        }
+        .close-anchor {
+            position: absolute;
+            top: -28px;
+            right: 8px;
+            background: #e2e8f0;
+            border-radius: 30px;
+            padding: 0 10px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        /* Load more button */
+        .load-more-btn {
+            transition: all 0.2s;
+        }
+        /* Card image aspect ratio */
+        .card-img {
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+    <!-- Top Navigation (mobile-first, no sidebar) -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center py-3">
+                <a href="/" class="text-2xl font-extrabold bg-gradient-to-r from-indigo-700 to-rose-600 bg-clip-text text-transparent">InsightHub</a>
+                <nav class="flex gap-4 md:gap-6 overflow-x-auto pb-1 no-scrollbar">
+                    <a href="/" class="nav-link text-gray-700 hover:text-rose-600 font-medium whitespace-nowrap" data-route="/">Home</a>
+                    <a href="/category/technology" class="nav-link text-gray-700 hover:text-rose-600 font-medium whitespace-nowrap" data-route="/category/technology">Tech</a>
+                    <a href="/category/finance" class="nav-link text-gray-700 hover:text-rose-600 font-medium whitespace-nowrap" data-route="/category/finance">Finance</a>
+                    <a href="/category/ai-tools" class="nav-link text-gray-700 hover:text-rose-600 font-medium whitespace-nowrap" data-route="/category/ai-tools">AI Tools</a>
+                    <a href="/category/health" class="nav-link text-gray-700 hover:text-rose-600 font-medium whitespace-nowrap" data-route="/category/health">Health</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content container (dynamic views) -->
+    <main id="app" class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+        <!-- Loading spinner -->
+        <div class="flex justify-center py-20">
+            <i class="fas fa-spinner fa-spin text-3xl text-gray-400"></i>
+        </div>
+    </main>
+
+    <!-- Bottom anchor ad (fixed, closable) -->
+    <div id="bottomAnchorAd" class="bottom-anchor closed">
+        <div class="close-anchor" onclick="closeAnchorAd()">✕ Close</div>
+        <div class="ad-container py-2">
+            <div class="ad-label">Advertisement</div>
+            <!-- Google AdSense Anchor Ad (320x50 or 728x90) -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="ANCHOR_SLOT_ID"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/ads.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize router when DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            window.router = new Router();
+            window.router.init();
+        });
+    </script>
+</body>
+</html>
